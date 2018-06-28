@@ -1,0 +1,4 @@
+#Wed Jun 27 16:39:39 IST 2018
+base.0=/var/www/html/react-app/AwesomeProject/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/var/www/html/react-app/AwesomeProject/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
