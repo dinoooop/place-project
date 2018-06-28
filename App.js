@@ -64,8 +64,10 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     // flex: 1,
+    width:"100%",
     flexDirection: "row",
     justifyContent: "space-between",
+    paddingBottom: 10
   },
   placeInput: {
     width: "70%"
