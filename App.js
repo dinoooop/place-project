@@ -1,54 +1,41 @@
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import ListItem from './src/components/ListItem/ListItem'
+import React from "react";
+import { StyleSheet, View } from "react-native";
+
+import PlaceInput from "./src/components/PlaceInput/PlaceInput";
+import PlaceList from "./src/components/PlaceList/PlaceList";
+//import ListItem from './src/components/ListItem/ListItem';
 
 export default class App extends React.Component {
 
   state = {
-    placeName: '',
     places: []
   };
 
-  placeChangeHandler = val => {
-    this.setState({
-      placeName: val
+  placeAddedHandler = placeName => {
+    //console.log(placeName);
+    this.setState(prevState => {
+      return {
+        places: prevState.places.concat(placeName)
+      };
     });
   }
 
-  placeSubmitHandler = () => {
-
-    if(this.state.placeName.trim() === ""){
-      return;
-    }
-
+  placeDeletedHandler = index => {
     this.setState(prevState => {
       return {
-        places: prevState.places.concat(prevState.placeName)
+        places: prevState.places.filter((place, i) => {
+          return i !== index;
+        })
       };
     });
-
-
   }
 
   render() {
-    const placesOutput = this.state.places.map((place, i) => (
-        <ListItem key={i} placeName={place}></ListItem>
-    ));
-
+    console.log("test");
     return (
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <TextInput 
-            placeholder="Place name"
-            value={this.state.placeName}
-            onChangeText={this.placeChangeHandler}
-            style={styles.placeInput}
-          />
-          <Button title="Add" style={styles.placeButton} onPress={this.placeSubmitHandler} />
-        </View>
-        <View style={styles.listContainer}>
-          {placesOutput}
-        </View>
+        <PlaceInput onPlaceAdded={this.placeAddedHandler} />
+        <PlaceList places={this.state.places} onItemDeleted={this.placeDeletedHandler} />
       </View>
     );
   }
@@ -61,21 +48,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-start",
-  },
-  inputContainer: {
-    // flex: 1,
-    width:"100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingBottom: 10
-  },
-  placeInput: {
-    width: "70%"
-  },
-  placeButton: {
-    width: "30%"
-  },
-  listContainer: {
-    width: "100%"
   }
+
 });
