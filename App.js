@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 
 import PlaceInput from "./src/components/PlaceInput/PlaceInput";
 import PlaceList from "./src/components/PlaceList/PlaceList";
+import PlaceImage from "./src/assets/jungle-rainforest-trees-green-nature.jpg"
 
 export default class App extends React.Component {
 
@@ -15,7 +16,10 @@ export default class App extends React.Component {
       return {
         places: prevState.places.concat({
           key: Math.random(),
-          value: placeName
+          name: placeName,
+          image: {
+            uri: "https://d2e111jq13me73.cloudfront.net/sites/default/files/styles/review_gallery_carousel_slide_thumbnail/public/screenshots/csm-movie/the-dark-knight-ss1.jpg?itok=ya8KvBt3"
+          }
         })
       };
     });
