@@ -18,7 +18,6 @@ class PlaceInput extends React.Component {
 		if (this.state.placeName.trim() === "") {
 			return;
 		}
-		console.log(this.state.placeName);
 		this.props.onPlaceAdded(this.state.placeName);
 	};
 
